@@ -4,9 +4,18 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 
 ## 1. What was broken when you started?
 
-- What did the game look like the first time you ran it?
-- List at least two concrete bugs you noticed at the start  
-  (for example: "the hints were backwards").
+- **What did the game look like the first time you ran it?**
+  This is a number guessing game. I can choose the difficulty and then guess the number. The difficulty controls how many guesses I'm allowed, and every time I make a guess, a hint pops up telling me to go higher or lower.
+
+- **Concrete bugs I noticed at the start:**
+  1. **The hints were backwards.** I'm on easy mode and the secret number is 75. I typed 50 and it told me to go lower, but it should have told me to go higher.
+  2. **The guessing page shows the wrong number range.** On easy mode, the left-hand sidebar says the range is 1 to 20, but the guessing page says "guess a number between 1 and 100."
+  3. **The hard mode logic is wrong.** Its range is 1 to 50, but compared to normal difficulty (1 to 100), this shrinks the range and makes hard mode *easier* to guess.
+  4. **The developer debug info panel doesn't update on "New Game."** After clicking New Game, it still showed the previous score and history, which should reset for the new game.
+  5. **New attempts accumulate onto the old game.** Even after clicking New Game, new attempts are added to the previous score and history instead of starting fresh.
+  6. **Switching difficulty keeps the old state.** When I switch from hard to normal difficulty, the score and history still use the previous values.
+  7. **Easy mode secret number is out of range.** Easy mode's range is 1 to 20, but the secret number was 27, which is out of range.
+  8. **Hard mode secret number is out of range.** Hard mode's range is 1 to 50, but the secret number was 92, which is out of range.
 
 **Bug Reproduction Log**
 
@@ -14,10 +23,9 @@ Document at least 3 bugs you found. Add rows as needed.
 
 | Input | Expected Behavior | Actual Behavior | Console Output / Error |
 |-------|-------------------|-----------------|------------------------|
-| | | | |
-| | | | |
-| | | | |
-
+| Guess of 12 (secret number is higher) | "Go higher" hint | "Go lower" hint | none |
+| Guess of 30 in easy mode (range 1–20) | "Out of range — easy mode is 1 to 20" | Accepted the guess and hinted "go higher" | none |
+| Guess of 92 (the correct number) in hard mode | Score in developer info shows 50 | Score in developer info shows -30; it didn't update | none |
 ---
 
 ## 2. How did you use AI as a teammate?
