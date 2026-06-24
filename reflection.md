@@ -17,6 +17,7 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
   7. **Easy mode secret number is out of range.** Easy mode's range is 1 to 20, but the secret number was 27, which is out of range.
   8. **Hard mode secret number is out of range.** Hard mode's range is 1 to 50, but the secret number was 92, which is out of range.
 
+
 **Bug Reproduction Log**
 
 Document at least 3 bugs you found. Add rows as needed.
@@ -49,7 +50,7 @@ Document at least 3 bugs you found. Add rows as needed.
 - **How did you decide whether a bug was really fixed?**
 
   I ran `pytest`, and if it passed all the tests, I then tried the feature on the webpage to see whether it worked as expected.
-And I also did it manually. For example, to check the "number out of range" bug, I went to easy mode and clicked "New Game" many times — more than 20 times. All the numbers were within the range of 1 to 20, so I concluded that the bug was really fixed.
+  And I also did it manually. For example, to check the "number out of range" bug, I went to easy mode and clicked "New Game" many times — more than 20 times. All the numbers were within the range of 1 to 20, so I concluded that the bug was really fixed.
 
 - **Describe at least one test you ran (manual or using pytest) and what it showed you about your code.**
 
