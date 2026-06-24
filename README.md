@@ -25,28 +25,47 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+### Describe the game's purpose
+This is a number-guessing game built with Streamlit. The player selects a difficulty level (Easy, Normal, or Hard), which sets both the number range and the number of allowed guesses. The player then guesses the secret number, and after each guess the game gives a hint telling them to go higher or lower, until they either guess correctly or run out of attempts.
+
+### Detail which bugs you found
+1. **Hints were backwards** — when the guess was too low, the game said "go lower" instead of "go higher" (the high/low logic was reversed).
+2. **Secret number out of range** — in Easy mode the range was 1–20, but the secret number could be generated outside that range (e.g. 27).
+3. **Inconsistent range display** — the sidebar showed the range as 1–20 while the guessing page said "guess a number between 1 and 100."
+4. **State not resetting on New Game** — clicking "New Game" did not reset the score and history; new attempts accumulated onto the previous game.
+
+### Explain what fixes you applied
+- Fixed the reversed high/low hint logic so the correct direction is returned (when `guess > secret`, the game now says "go lower," and vice versa).
+- Fixed the secret-number generation so it always falls within the selected difficulty's range.
+- Refactored the core logic (such as `check_guess`) out of `app.py` and into `logic_utils.py`, then updated the imports in `app.py`.
+- Added a `pytest` test in `tests/test_game_logic.py` to verify the hint logic, and confirmed all tests pass.
 
 ## 📸 Demo Walkthrough
 
 Describe your fixed game in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. User selects Easy mode (range 1–20)
+2. User enters a guess of 5
+3. Game returns "Too Low — go higher"   ← (the high/low hint bug is now fixed)
+4. User enters a guess of 15 → "Too High — go lower"
+5. User enters a guess of 12 → "Correct!"
+6. Game ends after the correct guess
 
 **Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
 
 ## 🧪 Test Results
 
 ```
-# Paste your pytest output here, e.g.:
-# pytest tests/
-# ========================= X passed in 0.XXs =========================
+$ pytest
+============================================================== test session starts ===============================================================
+platform win32 -- Python 3.14.5, pytest-9.1.1, pluggy-1.6.0
+rootdir: C:\Users\at252\OneDrive\Documents\ai110\project1\ai110-module1show-gameglitchinvestigator-starter
+plugins: anyio-4.14.0
+collected 6 items
+
+tests\test_game_logic.py ......                                                                                          [100%]
+
+=============================================================== 6 passed in 0.05s ================================================================
 ```
 
 ## 🚀 Stretch Features

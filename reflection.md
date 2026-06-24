@@ -65,11 +65,25 @@ Document at least 3 bugs you found. Add rows as needed.
 
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
 
+  Streamlit is a Python library that lets you build a web app using only Python code, without writing HTML or JavaScript. The game's web interface in this project was built with it.
+
+  Streamlit "reruns" means that every time you interact with the page — like clicking a button or typing a guess — Streamlit re-runs the entire `app.py` script from top to bottom. It doesn't just update one small part; it runs the whole file again.
+
+  Session state is like a memory box that keeps its contents between reruns. Anything the app needs to remember — the score, the secret number — has to be stored in session state, so that when the script reruns, these things won't be lost.
+
 ---
 
 ## 5. Looking ahead: your developer habits
 
 - What is one habit or strategy from this project that you want to reuse in future labs or projects?
   - This could be a testing habit, a prompting strategy, or a way you used Git.
+
+  The habit I will reuse is asking AI to help me locate bugs by giving it the context. I like the process: first use the app and notice the things that don't match the expected logic, then list them out, then give the AI that context and ask it to help me locate the bug. After that, I write a pytest test, and finally I check manually.
+
 - What is one thing you would do differently next time you work with AI on a coding task?
-- In one or two sentences, describe how this project changed the way you think about AI generated code.
+
+  Next time I'll ask the AI to walk me through the project one file at a time. For this project, I had a hard time reading the code because I had never used Streamlit before, so I'd want the AI to walk me through the project first.
+
+- In one or two sentences, describe how this project changed the way you think about AI-generated code.
+
+  This project's code was AI-generated, and it had real problems: the files weren't organized correctly (for example, functions that should have been in `logic_utils.py` were in `app.py`), the original AI-generated tests didn't work because they didn't account for `check_guess` returning two variables, and there were many places where the logic was simply wrong, which caused all the bugs. It taught me not to trust AI-generated code blindly, and to always review and test it carefully myself.
