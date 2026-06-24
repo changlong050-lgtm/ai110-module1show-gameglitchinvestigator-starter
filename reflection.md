@@ -37,7 +37,7 @@ Document at least 3 bugs you found. Add rows as needed.
 
 - **Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).**
 
-  The AI helped me locate the bug very quickly. I gave it the context and asked it to help me find the bug, and it directly told me which line of code I should fix. I verified this by going to that line, applying the fix, and confirming the game then behaved as expected.
+  I asked the AI to help me locate the "Easy mode secret number is out of range" bug — Easy mode's range is supposed to be 1 to 20, but the secret number was 27, which is out of range. The AI located the line where the range was hardcoded: the secret number was generated with `random(1, 100)`, which didn't change for different difficulty levels. I verified this by checking that line, then fixed it to use the low, high varibales `st.session_state.secret = random.randint(low, high)"` so it gives the correct secret number.
 
 - **Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).**
 
