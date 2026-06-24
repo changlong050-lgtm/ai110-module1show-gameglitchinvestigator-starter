@@ -30,20 +30,35 @@ Document at least 3 bugs you found. Add rows as needed.
 
 ## 2. How did you use AI as a teammate?
 
-- Which AI tools did you use on this project (for example: ChatGPT, Gemini, Copilot)?
-- Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
-- Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
+- **Which AI tools did you use on this project (for example: ChatGPT, Gemini, Copilot)?**
+
+  Claude.
+
+- **Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).**
+
+  The AI helped me locate the bug very quickly. I gave it the context and asked it to help me find the bug, and it directly told me which line of code I should fix. I verified this by going to that line, applying the fix, and confirming the game then behaved as expected.
+
+- **Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).**
+
+  I asked the AI to generate test code for the bug I had just fixed, but it wrote the tests in `logic_utils.py` instead of in `tests/test_game_logic.py`. I had to specify exactly where I wanted the tests to be written. I verified the problem by checking the file structure and seeing that the tests had been placed in the wrong file.
 
 ---
 
 ## 3. Debugging and testing your fixes
 
-- How did you decide whether a bug was really fixed?
-- Describe at least one test you ran (manual or using pytest)  
-  and what it showed you about your code.
-- Did AI help you design or understand any tests? How?
+- **How did you decide whether a bug was really fixed?**
 
----
+  I ran `pytest`, and if it passed all the tests, I then tried the feature on the webpage to see whether it worked as expected.
+And I also did it manually. For example, to check the "number out of range" bug, I went to easy mode and clicked "New Game" many times — more than 20 times. All the numbers were within the range of 1 to 20, so I concluded that the bug was really fixed.
+
+- **Describe at least one test you ran (manual or using pytest) and what it showed you about your code.**
+
+  I tested manually: the secret number was 50, and I typed 60. The game asked me to go lower, which was the expected behavior. This showed that my code works correctly — when `guess > secret`, I assigned the "go lower" message.
+
+- **Did AI help you design or understand any tests? How?**
+
+  Yes. The provided test was not working, so I asked the AI about it. It explained that the `check_guess` function returns two values, `(outcome, message)`, but the test only accepted one variable, which is why it failed.
+
 
 ## 4. What did you learn about Streamlit and state?
 
