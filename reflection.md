@@ -80,6 +80,8 @@ Document at least 3 bugs you found. Add rows as needed.
 
   The habit I will reuse is asking AI to help me locate bugs by giving it the context. I like the process: first use the app and notice the things that don't match the expected logic, then list them out, then give the AI that context and ask it to help me locate the bug. After that, I write a pytest test, and finally I check manually.
 
+  The other habit I want to keep, is to keeping doing git commit whenever I finish a task so I can track my process. 
+
 - What is one thing you would do differently next time you work with AI on a coding task?
 
   Next time I'll ask the AI to walk me through the project one file at a time. For this project, I had a hard time reading the code because I had never used Streamlit before, so I'd want the AI to walk me through the project first.
@@ -87,3 +89,5 @@ Document at least 3 bugs you found. Add rows as needed.
 - In one or two sentences, describe how this project changed the way you think about AI-generated code.
 
   This project's code was AI-generated, and it had real problems: the files weren't organized correctly (for example, functions that should have been in `logic_utils.py` were in `app.py`), the original AI-generated tests didn't work because they didn't account for `check_guess` returning two variables, and there were many places where the logic was simply wrong, which caused all the bugs. It taught me not to trust AI-generated code blindly, and to always review and test it carefully myself.
+
+  #
